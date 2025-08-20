@@ -5,15 +5,17 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
 import '../AILabel/ailabel-story.scss';
+
+import { AILabel, AILabelActions, AILabelContent } from '../AILabel';
 import { default as Checkbox, CheckboxSkeleton } from './';
-import mdx from './Checkbox.mdx';
-import CheckboxGroup from '../CheckboxGroup';
+import { FolderOpen, Folders, View } from '@carbon/icons-react';
+
 import Button from '../Button';
-import { AILabel, AILabelContent, AILabelActions } from '../AILabel';
+import CheckboxGroup from '../CheckboxGroup';
 import { IconButton } from '../IconButton';
-import { View, FolderOpen, Folders } from '@carbon/icons-react';
+import React from 'react';
+import mdx from './Checkbox.mdx';
 
 export default {
   title: 'Components/Checkbox',
@@ -35,6 +37,7 @@ const sharedArgs = {
   invalidText: 'Invalid message goes here',
   warn: false,
   warnText: 'Warning message goes here',
+  readOnly: false,
 };
 
 const sharedArgTypes = {
@@ -135,10 +138,18 @@ const sharedArgTypes = {
   },
 };
 
-export const Default = (args) => (
+export const Default = ({ readOnly, ...args }) => (
   <CheckboxGroup className="some-class" legendText="Group label" {...args}>
-    <Checkbox labelText={`Checkbox label`} id="checkbox-label-1" />
-    <Checkbox labelText={`Checkbox label`} id="checkbox-label-2" />
+    <Checkbox
+      labelText={`Checkbox label`}
+      id="checkbox-label-1"
+      readOnly={readOnly}
+    />
+    <Checkbox
+      labelText={`Checkbox label`}
+      id="checkbox-label-2"
+      readOnly={readOnly}
+    />
   </CheckboxGroup>
 );
 
@@ -148,7 +159,7 @@ Default.args = {
 
 Default.argTypes = { ...sharedArgTypes };
 
-export const Horizontal = (args) => {
+export const Horizontal = ({ readOnly, ...args }) => {
   return (
     <CheckboxGroup
       orientation="horizontal"
@@ -156,9 +167,21 @@ export const Horizontal = (args) => {
       legendText="Group label"
       helperText="Helper text goes here"
       {...args}>
-      <Checkbox labelText={`Checkbox label`} id="checkbox-label-1" />
-      <Checkbox labelText={`Checkbox label`} id="checkbox-label-2" />
-      <Checkbox labelText={`Checkbox label`} id="checkbox-label-3" />
+      <Checkbox
+        labelText={`Checkbox label`}
+        id="checkbox-label-1"
+        readOnly={readOnly}
+      />
+      <Checkbox
+        labelText={`Checkbox label`}
+        id="checkbox-label-2"
+        readOnly={readOnly}
+      />
+      <Checkbox
+        labelText={`Checkbox label`}
+        id="checkbox-label-3"
+        readOnly={readOnly}
+      />
     </CheckboxGroup>
   );
 };
@@ -194,7 +217,7 @@ export const Single = () => {
         warnText="Warning text goes here"
       />
       <br /> <br />
-      <Checkbox {...checkboxEvents} id="checkbox-6" readOnly />
+      <Checkbox {...checkboxEvents} id="checkbox-6" />
     </>
   );
 };
@@ -203,7 +226,7 @@ export const Skeleton = () => {
   return <CheckboxSkeleton />;
 };
 
-export const withAILabel = (args) => {
+export const withAILabel = ({ readOnly, ...args }) => {
   const AILabelFunc = (kind) => (
     <AILabel className="ai-label-container" kind={kind}>
       <AILabelContent>
@@ -241,9 +264,21 @@ export const withAILabel = (args) => {
         legendText="Group Label"
         decorator={AILabelFunc()}
         {...args}>
-        <Checkbox labelText={`Checkbox label`} id="checkbox-label-1" />
-        <Checkbox labelText={`Checkbox label`} id="checkbox-label-2" />
-        <Checkbox labelText={`Checkbox label`} id="checkbox-label-3" />
+        <Checkbox
+          labelText={`Checkbox label`}
+          id="checkbox-label-1"
+          readOnly={readOnly}
+        />
+        <Checkbox
+          labelText={`Checkbox label`}
+          id="checkbox-label-2"
+          readOnly={readOnly}
+        />
+        <Checkbox
+          labelText={`Checkbox label`}
+          id="checkbox-label-3"
+          readOnly={readOnly}
+        />
       </CheckboxGroup>
 
       <CheckboxGroup legendText="Group Label" {...args}>
@@ -251,13 +286,19 @@ export const withAILabel = (args) => {
           labelText={`Checkbox label`}
           id="checkbox-label-4"
           decorator={AILabelFunc()}
+          readOnly={readOnly}
         />
         <Checkbox
           labelText={`Checkbox label`}
           id="checkbox-label-5"
           decorator={AILabelFunc()}
+          readOnly={readOnly}
         />
-        <Checkbox labelText={`Checkbox label`} id="checkbox-label-6" />
+        <Checkbox
+          labelText={`Checkbox label`}
+          id="checkbox-label-6"
+          readOnly={readOnly}
+        />
       </CheckboxGroup>
 
       <CheckboxGroup legendText="Group Label" {...args}>
@@ -265,13 +306,19 @@ export const withAILabel = (args) => {
           labelText={`Checkbox label`}
           id="checkbox-label-7"
           decorator={AILabelFunc('inline')}
+          readOnly={readOnly}
         />
         <Checkbox
           labelText={`Checkbox label`}
           id="checkbox-label-8"
           decorator={AILabelFunc('inline')}
+          readOnly={readOnly}
         />
-        <Checkbox labelText={`Checkbox label`} id="checkbox-label-9" />
+        <Checkbox
+          labelText={`Checkbox label`}
+          id="checkbox-label-9"
+          readOnly={readOnly}
+        />
       </CheckboxGroup>
     </div>
   );
